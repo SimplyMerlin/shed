@@ -12,11 +12,11 @@ const PostSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const user = auth();
+  const { userId, orgId } = auth();
 
-  const userId = user.userId;
+  const ownerId = orgId || userId;
 
-  if (!userId) {
+  if (!ownerId) {
     return new NextResponse("Not authorized", { status: 401 });
   }
 
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   try {
     const insert = await db
       .insert(resource)
-      .values({ owner: userId, name: name })
+      .values({ ownerId: ownerId, name: name })
       .execute();
 
     console.log("successfully inserted new post", insert);
