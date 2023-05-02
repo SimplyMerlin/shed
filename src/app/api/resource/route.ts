@@ -1,4 +1,5 @@
 export const runtime = "experimental-edge";
+export const preferredRegion = "home";
 
 import { auth } from "@clerk/nextjs/app-beta";
 import { NextResponse } from "next/server";

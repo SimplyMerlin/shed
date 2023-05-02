@@ -3,6 +3,9 @@ import { db } from "~/db";
 import { resource } from "~/db/schema";
 import { CreateResource } from "~/app/_components/CreateResource";
 
+export const runtime = "experimental-edge";
+export const preferredRegion = "home";
+
 const Feed = async () => {
   const resources = await db.select().from(resource);
   const self = await currentUser();
