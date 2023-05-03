@@ -3,7 +3,7 @@ import { db } from "~/db";
 import { resource } from "~/db/schema";
 import { CreateResource } from "~/app/_components/CreateResource";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 export const preferredRegion = "home";
 
 const Feed = async () => {

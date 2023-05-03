@@ -2,6 +2,7 @@ export const runtime = "experimental-edge";
 export const preferredRegion = "home";
 
 import { auth } from "@clerk/nextjs/app-beta";
+import { nanoid } from "nanoid";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "~/db";
@@ -33,7 +34,7 @@ export async function POST(request: Request) {
   try {
     const insert = await db
       .insert(resource)
-      .values({ ownerId: ownerId, name: name })
+      .values({ ownerId: ownerId, name: name, id: nanoid() })
       .execute();
 
     console.log("successfully inserted new post", insert);
